@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>𝐕𝐄𝐊𝐀𝐖𝐍 𝐏𝐔𝐗𝐀𝐃𝐀𝐒 • mobile</title>
-  <!-- Fontes e ícones otimizados -->
+  <title>𝐕𝐄𝐊𝐀𝐖𝐍 𝐏𝐔𝐗𝐀𝐃𝐀𝐒 • estio alternativo</title>
+  <!-- Nova fonte e ícones -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -17,548 +17,518 @@
     }
 
     body {
-      background-color: #10002B;       /* fundo principal */
-      color: #f0f0f0;
-      font-family: 'Inter', sans-serif;
+      background-color: #0B001F; /* uma variante mais escura da #10002B */
+      color: #f0f0ff;
+      font-family: 'Space Grotesk', sans-serif;
       line-height: 1.4;
-      overflow-x: hidden;
-      width: 100%;
       min-height: 100vh;
+      width: 100%;
       -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* overlay de linhas (grid) mais suave */
-    .grid-overlay {
+    /* fundo com gradiente e ruído */
+    body::before {
+      content: "";
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: 
-        linear-gradient(rgba(3, 255, 156, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(3, 255, 156, 0.04) 1px, transparent 1px);
-      background-size: 30px 30px;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 70% 30%, #03ff9c08 0%, #10002B 60%),
+                  repeating-linear-gradient(45deg, #03ff9c02 0px, #03ff9c02 2px, transparent 2px, transparent 8px);
+      z-index: -2;
       pointer-events: none;
-      z-index: 1;
     }
 
-    /* partículas flutuantes */
-    .particle-mobile {
+    /* bolhas de luz animadas (novo estilo) */
+    .light-orb {
       position: fixed;
-      width: 4px;
-      height: 4px;
-      background: #03FF9C;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle at 30% 30%, #03ff9c20, transparent 70%);
       border-radius: 50%;
-      filter: blur(1px);
-      opacity: 0.25;
-      animation: floatMobile 10s infinite linear;
-      z-index: 0;
+      filter: blur(60px);
+      z-index: -1;
+      animation: orbMove 18s infinite alternate ease-in-out;
       pointer-events: none;
     }
 
-    @keyframes floatMobile {
-      0% { transform: translateY(110vh) scale(1); opacity: 0.2; }
-      100% { transform: translateY(-20vh) scale(0.6); opacity: 0; }
+    .orb2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle at 70% 70%, #4d00ff20, transparent 80%);
+      bottom: 0;
+      right: 0;
+      animation: orbMove2 20s infinite alternate;
+    }
+
+    @keyframes orbMove {
+      0% { transform: translate(-10%, -10%) scale(1); opacity: 0.6; }
+      100% { transform: translate(15%, 15%) scale(1.2); opacity: 0.9; }
+    }
+
+    @keyframes orbMove2 {
+      0% { transform: translate(5%, -5%) scale(1); }
+      100% { transform: translate(-10%, 10%) scale(1.3); }
     }
 
     .container {
-      width: 100%;
-      padding: 1.2rem 1.2rem 2rem;
-      position: relative;
-      z-index: 10;
       max-width: 600px;
       margin: 0 auto;
+      padding: 1.5rem 1.5rem 2.5rem;
+      position: relative;
+      z-index: 10;
     }
 
-    /* cabeçalho simplificado */
-    .top-bar {
+    /* cabeçalho minimalista */
+    .top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 0.8rem;
     }
 
-    .mini-logo {
-      font-size: 1.8rem;
-      font-weight: 800;
+    .logo-compact {
+      font-size: 2rem;
+      font-weight: 700;
+      background: rgba(3, 255, 156, 0.1);
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      border: 1px solid #03FF9C;
       color: #03FF9C;
-      background: #10002B;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      border: 1.5px solid #03FF9C;
-      box-shadow: 0 0 15px #03FF9C;
-      letter-spacing: 1px;
-      white-space: nowrap;
+      backdrop-filter: blur(5px);
+      letter-spacing: -0.5px;
     }
 
-    .menu-icon {
+    .menu-dots {
       color: #03FF9C;
       font-size: 2rem;
-      border: 1.5px solid #03FF9C40;
-      border-radius: 50px;
-      padding: 0.4rem 1rem;
-      background: #10002B;
-      box-shadow: 0 0 10px #03FF9C;
-    }
-
-    /* nome principal adaptado para mobile */
-    .brand-mobile {
-      font-weight: 800;
-      line-height: 1.1;
-      text-align: center;
-      margin: 1rem 0 1.2rem;
-    }
-
-    .brand-mobile .line1 {
-      display: block;
-      font-size: clamp(2.2rem, 12vw, 4rem);
-      color: #03FF9C;
-      text-shadow: 0 0 8px #03FF9C, 0 0 20px #03FF9C;
-      letter-spacing: 2px;
-    }
-
-    .brand-mobile .line2 {
-      display: block;
-      font-size: clamp(2.6rem, 13vw, 4.5rem);
-      color: #03FF9C;
-      text-shadow: 0 0 10px #03FF9C, 0 0 30px #03FF9C;
-      letter-spacing: 4px;
-      margin-top: -0.3rem;
-    }
-
-    .subhead-mobile {
-      font-size: 1.1rem;
-      color: #c0c0e0;
-      background: rgba(3, 255, 156, 0.08);
-      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      padding: 0.2rem 1rem;
       border-radius: 60px;
-      margin: 1.2rem 0 2rem;
-      border-left: 6px solid #03FF9C;
-      font-weight: 500;
-      backdrop-filter: blur(4px);
-      text-align: center;
+      border: 1px dashed #03FF9C80;
     }
 
-    /* cartão principal com botão de contato */
-    .hero-card {
-      background: rgba(16, 0, 43, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid #03FF9C;
-      border-radius: 2.5rem;
-      padding: 2rem 1.5rem;
-      margin: 2rem 0 2.5rem;
-      box-shadow: 0 15px 30px -10px #03FF9C60, 0 0 0 1px #03FF9C inset;
-      transition: transform 0.2s;
+    /* título principal com peso */
+    .title-block {
+      margin: 1.8rem 0 1rem;
     }
 
-    .hero-card h2 {
+    .title-block h1 {
+      font-weight: 700;
+      line-height: 1;
+      font-size: clamp(2.8rem, 15vw, 5rem);
+      text-transform: uppercase;
+    }
+
+    .title-block .line-neon {
+      display: block;
+      color: #03FF9C;
+      text-shadow: 3px 3px 0 #10002B, 0 0 20px #03FF9C;
+      letter-spacing: -1px;
+    }
+
+    .title-block .line-white {
+      display: block;
       color: white;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #03FF9C80;
+      font-size: 0.9em;
+      margin-top: -0.2rem;
+    }
+
+    .tagline-new {
+      font-size: 1.1rem;
+      color: #b0b0ff;
+      background: rgba(0,0,0,0.3);
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      margin: 1.5rem 0 2.5rem;
+      border: 1px solid #03FF9C40;
+      backdrop-filter: blur(5px);
+      display: inline-block;
+    }
+
+    /* cards de serviço com design mais "sharp" */
+    .service-grid-alt {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2.8rem 0;
+    }
+
+    .service-card-alt {
+      background: rgba(16, 0, 43, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(3, 255, 156, 0.25);
+      border-radius: 30px;
+      padding: 1.6rem 1.8rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 1.5rem;
+      transition: all 0.25s;
+      box-shadow: 0 10px 20px -15px black;
     }
 
-    .hero-card h2 i {
+    .service-card-alt:active {
+      border-color: #03FF9C;
+      background: rgba(3, 255, 156, 0.1);
+      transform: scale(0.99);
+    }
+
+    .card-icon-alt {
+      background: #03FF9C20;
+      width: 65px;
+      height: 65px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
       color: #03FF9C;
-      font-size: 2rem;
+      border: 2px solid #03FF9C;
+      box-shadow: 0 0 30px #03FF9C;
     }
 
-    .hero-card p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #ddd;
+    .card-text-alt h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1.2;
     }
 
-    /* botão neon gigante amigável ao polegar */
-    .btn-mega-neon {
-      background: transparent;
-      border: 2.5px solid #03FF9C;
-      color: #03FF9C;
-      padding: 1.2rem 1.8rem;
-      font-size: 1.6rem;
+    .card-text-alt p {
+      color: #b0b0dd;
+      font-size: 0.95rem;
+    }
+
+    /* botão de ação principal estilizado */
+    .cta-block {
+      background: rgba(3, 255, 156, 0.05);
+      border: 2px solid #03FF9C;
+      border-radius: 40px;
+      padding: 2rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .cta-block h3 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-alt {
+      background: #03FF9C;
+      border: none;
+      color: #10002B;
+      font-size: 1.9rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      padding: 1.2rem 1.5rem;
       border-radius: 60px;
       width: 100%;
-      text-align: center;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      box-shadow: 0 0 20px #03FF9C;
-      transition: all 0.2s ease;
-      -webkit-touch-callout: none;
+      gap: 10px;
+      box-shadow: 0 0 40px #03FF9C;
+      transition: 0.2s;
+      text-transform: uppercase;
     }
 
-    .btn-mega-neon i {
-      font-size: 2rem;
+    .btn-alt i {
+      font-size: 2.2rem;
     }
 
-    .btn-mega-neon:active {
-      background: #03FF9C;
-      color: #10002B;
-      transform: scale(0.97);
-      box-shadow: 0 0 45px #03FF9C;
-    }
-
-    /* grade de serviços em coluna */
-    .services-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin: 2.8rem 0;
-    }
-
-    .service-item-mob {
-      background: rgba(3, 255, 156, 0.03);
-      border: 1px solid rgba(3, 255, 156, 0.25);
-      border-radius: 2rem;
-      padding: 1.5rem 1.8rem;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      backdrop-filter: blur(4px);
-      transition: 0.15s;
-    }
-
-    .service-item-mob:active {
-      background: rgba(3, 255, 156, 0.15);
-      border-color: #03FF9C;
-    }
-
-    .service-icon-mob {
-      font-size: 2.5rem;
+    .btn-alt:active {
+      background: #10002B;
       color: #03FF9C;
-      min-width: 60px;
-      text-align: center;
-      filter: drop-shadow(0 0 8px #03FF9C);
+      border: 2px solid #03FF9C;
+      box-shadow: 0 0 60px #03FF9C;
     }
 
-    .service-text-mob h3 {
-      font-size: 1.6rem;
-      color: white;
-      margin-bottom: 0.2rem;
-    }
-
-    .service-text-mob p {
-      color: #b5b5d0;
-      font-size: 0.95rem;
-    }
-
-    /* estatísticas em linha (flex wrap) */
-    .stats-row-mob {
+    /* estatísticas em cards horizontais */
+    .stats-alt {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
-      background: #10002Bd9;
-      backdrop-filter: blur(10px);
-      border: 1px solid #03FF9C60;
-      border-radius: 50px;
-      padding: 1.5rem 0.8rem;
-      margin: 2.8rem 0;
       gap: 1rem;
+      margin: 2.8rem 0;
     }
 
-    .stat-block {
+    .stat-item-alt {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #03FF9C60;
+      border-radius: 35px;
+      padding: 1.2rem 0.8rem;
       flex: 1 0 40%;
       text-align: center;
+      backdrop-filter: blur(6px);
     }
 
-    .stat-num {
-      font-size: 2.4rem;
-      font-weight: 800;
+    .stat-item-alt .big-number {
+      font-size: 2.5rem;
+      font-weight: 700;
       color: #03FF9C;
-      text-shadow: 0 0 15px #03FF9C;
-      line-height: 1.2;
+      text-shadow: 0 0 20px #03FF9C;
     }
 
-    .stat-label {
-      font-size: 0.95rem;
+    .stat-item-alt span {
+      display: block;
       color: #ccc;
     }
 
-    /* bloco admin com destaque total */
-    .admin-block-mob {
-      background: linear-gradient(145deg, #10002B, #1d0147);
-      border: 2px solid #03FF9C;
-      border-radius: 3rem;
-      padding: 2.2rem 1.5rem;
-      margin: 2.8rem 0;
+    /* seção admin com destaque */
+    .admin-panel-alt {
+      background: #0d0027;
+      border: 3px solid #03FF9C;
+      border-radius: 50px;
+      padding: 2.5rem 1.8rem;
+      margin: 3rem 0 2rem;
       text-align: center;
-      box-shadow: 0 0 50px #03FF9C40;
+      box-shadow: 0 0 70px #03FF9C50;
+      position: relative;
     }
 
-    .admin-block-mob i {
-      font-size: 4rem;
+    .admin-panel-alt i.fa-telegram {
+      font-size: 4.5rem;
       color: #03FF9C;
-      filter: drop-shadow(0 0 15px #03FF9C);
+      filter: drop-shadow(0 0 20px #03FF9C);
+      margin-bottom: 1rem;
     }
 
-    .admin-block-mob h2 {
-      font-size: 2rem;
-      color: white;
-      margin: 0.8rem 0 0.5rem;
-    }
-
-    .admin-tag-mob {
-      font-size: 2.2rem;
-      font-weight: 800;
+    .admin-handle-alt {
+      font-size: 2.5rem;
+      font-weight: 700;
       color: #03FF9C;
       text-decoration: none;
-      background: #10002B;
-      padding: 0.5rem 1.8rem;
-      border-radius: 60px;
-      display: inline-block;
+      border-bottom: 3px dotted #03FF9C;
+      padding-bottom: 5px;
       margin: 1rem 0;
-      border: 2px solid #03FF9C;
-      box-shadow: 0 0 25px #03FF9C;
+      display: inline-block;
       word-break: break-word;
     }
 
-    .admin-tag-mob:active {
-      background: #03FF9C;
-      color: #10002B;
+    .admin-handle-alt:active {
+      color: white;
+      border-bottom-color: white;
     }
 
-    .contact-row-mob {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .contact-row-mob a {
-      border: 1.5px solid #03FF9C80;
-      border-radius: 60px;
-      padding: 1rem 1.2rem;
+    .btn-small-alt {
+      background: transparent;
+      border: 2px solid #03FF9C80;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
       color: #03FF9C;
       text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem 0.5rem;
       font-weight: 600;
-      font-size: 1.2rem;
+    }
+
+    .btn-small-alt:active {
+      background: #03FF9C30;
+    }
+
+    /* selo de garantia */
+    .badge-alt {
       background: #10002B;
-    }
-
-    .contact-row-mob a:active {
-      background: #03FF9C20;
-    }
-
-    /* selo de confiança */
-    .trust-badge-mob {
+      border: 1px solid #03FF9C;
+      border-radius: 100px;
+      padding: 1.2rem 1.8rem;
+      margin: 2rem 0;
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: #1d003b;
-      border-radius: 60px;
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      border: 1px solid #03FF9C;
+      gap: 1.2rem;
+      backdrop-filter: blur(5px);
     }
 
-    .trust-badge-mob i {
-      font-size: 2.2rem;
+    .badge-alt i {
+      font-size: 2.5rem;
       color: #03FF9C;
     }
 
-    .trust-badge-mob span {
-      font-size: 1.1rem;
-      font-weight: 500;
+    .badge-alt strong {
+      color: white;
+      font-size: 1.2rem;
     }
 
-    /* rodapé simplificado */
     footer {
-      margin-top: 3rem;
+      margin-top: 4rem;
       text-align: center;
-      color: #5c5c8a;
+      color: #5f5f9f;
       border-top: 1px solid #03FF9C30;
-      padding-top: 1.8rem;
-      font-size: 0.9rem;
+      padding-top: 2rem;
     }
 
-    /* remove qualquer menu inferior que tenha sobrado */
-    .bottom-nav {
-      display: none;
-    }
-
-    /* remove padding extra que era para o menu */
+    /* sem navegação inferior */
     body {
       padding-bottom: 0;
     }
 
+    /* ajustes 380px */
     @media (max-width: 380px) {
-      .brand-mobile .line1 { font-size: 2rem; }
-      .brand-mobile .line2 { font-size: 2.4rem; }
-      .service-item-mob { padding: 1rem; }
-      .service-icon-mob { font-size: 2rem; min-width: 45px; }
+      .service-card-alt { padding: 1.2rem; }
+      .card-icon-alt { width: 55px; height: 55px; font-size: 1.8rem; }
+      .card-text-alt h3 { font-size: 1.4rem; }
+      .admin-handle-alt { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="grid-overlay"></div>
-
-  <!-- partículas dinâmicas -->
-  <div id="particulas-mobile"></div>
+  <!-- orbes de luz flutuantes (novo elemento) -->
+  <div class="light-orb" style="top: 5%; left: -10%;"></div>
+  <div class="light-orb orb2" style="bottom: -10%; right: -10%;"></div>
 
   <div class="container">
-    <!-- top bar compacta -->
-    <div class="top-bar">
-      <div class="mini-logo">𝐕𝐊</div>
-      <div class="menu-icon"><i class="fas fa-bolt"></i></div>
+    <!-- topo minimalista -->
+    <div class="top-row">
+      <div class="logo-compact">VK</div>
+      <div class="menu-dots"><i class="fas fa-ellipsis-h"></i></div>
     </div>
 
-    <!-- nome com peso visual -->
-    <div class="brand-mobile">
-      <span class="line1">𝐕𝐄𝐊𝐀𝐖𝐍</span>
-      <span class="line2">𝐏𝐔𝐗𝐀𝐃𝐀𝐒</span>
+    <!-- título com duas cores -->
+    <div class="title-block">
+      <h1>
+        <span class="line-neon">𝐕𝐄𝐊𝐀𝐖𝐍</span>
+        <span class="line-white">𝐏𝐔𝐗𝐀𝐃𝐀𝐒</span>
+      </h1>
     </div>
 
-    <!-- subtítulo com ícone -->
-    <div class="subhead-mobile">
-      <i class="fas fa-database" style="color: #03FF9C; margin-right: 8px;"></i> 
-      consultas pessoais • grupo fechado
+    <!-- tagline com ícone -->
+    <div class="tagline-new">
+      <i class="fas fa-database" style="color:#03FF9C; margin-right: 8px;"></i> 
+      consultas avançadas • grupo restrito
     </div>
 
-    <!-- card principal com CTA para contato -->
-    <div class="hero-card">
-      <h2><i class="fas fa-bolt"></i> acesso imediato</h2>
-      <p>+50 bases integradas • resultados rápidos • 24/7</p>
-      <a href="https://t.me/officialk19" target="_blank" class="btn-mega-neon">
+    <!-- botão principal de contato (já no topo) -->
+    <div class="cta-block">
+      <h3>🔹 acesso imediato 🔹</h3>
+      <a href="https://t.me/officialk19" target="_blank" class="btn-alt">
         <i class="fab fa-telegram-plane"></i> @officialk19
       </a>
+      <p style="margin-top: 1.2rem; color:#aaa; font-size:0.95rem;">mais de 50 bases • resultados rápidos</p>
     </div>
 
-    <!-- lista de serviços (vertical, toque fácil) -->
-    <div class="services-stack">
-      <div class="service-item-mob">
-        <div class="service-icon-mob"><i class="fas fa-id-card"></i></div>
-        <div class="service-text-mob">
+    <!-- cards de serviço em novo estilo -->
+    <div class="service-grid-alt">
+      <div class="service-card-alt">
+        <div class="card-icon-alt"><i class="fas fa-id-card"></i></div>
+        <div class="card-text-alt">
           <h3>CPF / NOME</h3>
-          <p>Score, endereços, familiares, vínculos</p>
+          <p>Score, endereços, vínculos familiares</p>
         </div>
       </div>
-      <div class="service-item-mob">
-        <div class="service-icon-mob"><i class="fas fa-phone-alt"></i></div>
-        <div class="service-text-mob">
+      <div class="service-card-alt">
+        <div class="card-icon-alt"><i class="fas fa-phone-alt"></i></div>
+        <div class="card-text-alt">
           <h3>TELEFONE</h3>
           <p>Operadora, titular, dados cadastrais</p>
         </div>
       </div>
-      <div class="service-item-mob">
-        <div class="service-icon-mob"><i class="fas fa-car"></i></div>
-        <div class="service-text-mob">
+      <div class="service-card-alt">
+        <div class="card-icon-alt"><i class="fas fa-car"></i></div>
+        <div class="card-text-alt">
           <h3>VEÍCULOS</h3>
           <p>Placa, Renavam, multas, proprietários</p>
         </div>
       </div>
-      <div class="service-item-mob">
-        <div class="service-icon-mob"><i class="fas fa-globe"></i></div>
-        <div class="service-text-mob">
+      <div class="service-card-alt">
+        <div class="card-icon-alt"><i class="fas fa-globe"></i></div>
+        <div class="card-text-alt">
           <h3>REDES SOCIAIS</h3>
-          <p>E-mails, perfis, números em plataformas</p>
+          <p>E-mails, perfis, números vinculados</p>
         </div>
       </div>
     </div>
 
-    <!-- estatísticas simplificadas -->
-    <div class="stats-row-mob">
-      <div class="stat-block">
-        <div class="stat-num">+5k</div>
-        <div class="stat-label">membros</div>
+    <!-- estatísticas redesign -->
+    <div class="stats-alt">
+      <div class="stat-item-alt">
+        <div class="big-number">+5.2k</div>
+        <span>membros</span>
       </div>
-      <div class="stat-block">
-        <div class="stat-num">+62k</div>
-        <div class="stat-label">consultas</div>
+      <div class="stat-item-alt">
+        <div class="big-number">+68k</div>
+        <span>consultas/mês</span>
       </div>
-      <div class="stat-block">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">sigilo</div>
+      <div class="stat-item-alt">
+        <div class="big-number">100%</div>
+        <span>sigilo</span>
       </div>
-      <div class="stat-block">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">ativo</div>
+      <div class="stat-item-alt">
+        <div class="big-number">24/7</div>
+        <span>online</span>
       </div>
     </div>
 
-    <!-- ADMIN contato em destaque -->
-    <div class="admin-block-mob">
+    <!-- painel admin destacado -->
+    <div class="admin-panel-alt">
       <i class="fab fa-telegram"></i>
-      <h2>admin oficial</h2>
-      <a href="https://t.me/officialk19" target="_blank" class="admin-tag-mob">
+      <h2 style="color:white; font-size:2rem;">adm oficial</h2>
+      <a href="https://t.me/officialk19" target="_blank" class="admin-handle-alt">
         @officialk19
       </a>
-      <div class="contact-row-mob">
-        <a href="https://t.me/officialk19"><i class="fas fa-paper-plane"></i> enviar mensagem</a>
-        <a href="#"><i class="fas fa-question-circle"></i> tirar dúvidas</a>
+      <div style="margin: 1.5rem 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;">
+        <a href="https://t.me/officialk19" class="btn-small-alt"><i class="fas fa-paper-plane"></i> mensagem</a>
+        <a href="#" class="btn-small-alt"><i class="fas fa-question"></i> dúvidas</a>
       </div>
-      <p style="color: #bbd; margin-top: 1rem; font-size: 0.95rem;">
-        <i class="fas fa-shield-alt" style="color:#03FF9C;"></i> apenas esse contato é legítimo
-      </p>
+      <p style="color: #bbbbee;"><i class="fas fa-shield-alt" style="color:#03FF9C;"></i> canal direto e exclusivo</p>
     </div>
 
-    <!-- selo de verificação -->
-    <div class="trust-badge-mob">
-      <i class="fas fa-check-circle"></i>
-      <span><strong>grupo verificado</strong> • consultas reais • adm direto</span>
+    <!-- badge confiabilidade -->
+    <div class="badge-alt">
+      <i class="fas fa-check-double"></i>
+      <div><strong>grupo verificado • dados reais</strong><br><span style="color:#a0a0cc;">apenas este contato é oficial</span></div>
     </div>
 
     <footer>
-      <p>𝐕𝐄𝐊𝐀𝐖𝐍 𝐏𝐔𝐗𝐀𝐃𝐀𝐒 © 2025</p>
-      <p style="margin-top: 0.5rem;">#10002B #03FF9C • versão mobile</p>
+      <p>𝐕𝐄𝐊𝐀𝐖𝐍 𝐏𝐔𝐗𝐀𝐃𝐀𝐒 © 2025 • nova identidade</p>
+      <p style="font-size:0.8rem; opacity:0.6;">#10002B #03FF9C • estilo alternativo</p>
     </footer>
   </div>
 
-  <!-- script para partículas (leves) -->
+  <!-- pequeno script para interação sutil -->
   <script>
     (function() {
-      // cria partículas para mobile (10-12)
-      const particleField = document.getElementById('particulas-mobile');
-      if (particleField) {
-        for (let i = 0; i < 12; i++) {
-          const p = document.createElement('div');
-          p.className = 'particle-mobile';
-          p.style.left = Math.random() * 100 + '%';
-          p.style.width = (Math.random() * 8 + 3) + 'px';
-          p.style.height = p.style.width;
-          p.style.animationDelay = Math.random() * 6 + 's';
-          p.style.animationDuration = (Math.random() * 6 + 6) + 's';
-          p.style.background = i % 2 === 0 ? '#03FF9C' : '#b2ffd0';
-          particleField.appendChild(p);
-        }
-      }
-
-      // feedback tátil nos botões
-      const buttons = document.querySelectorAll('.btn-mega-neon, .admin-tag-mob, .service-item-mob, .contact-row-mob a');
-      buttons.forEach(btn => {
+      // adiciona alguns pequenos orbes extras? já temos no html, mas pode ser via js também
+      // feedback de toque nos botões
+      const btns = document.querySelectorAll('.btn-alt, .admin-handle-alt, .btn-small-alt, .service-card-alt');
+      btns.forEach(btn => {
         btn.addEventListener('touchstart', () => {
-          btn.style.transition = '0.05s';
+          btn.style.transition = '0.1s';
         }, { passive: true });
       });
 
-      // destaque do handle do admin ao tocar
-      const adminHandle = document.querySelector('.admin-tag-mob');
-      if (adminHandle) {
-        adminHandle.addEventListener('touchstart', () => {
-          adminHandle.style.background = '#03FF9C';
-          adminHandle.style.color = '#10002B';
+      // toque no admin handle
+      const adminLink = document.querySelector('.admin-handle-alt');
+      if (adminLink) {
+        adminLink.addEventListener('touchstart', () => {
+          adminLink.style.color = '#10002B';
+          adminLink.style.background = '#03FF9C';
+          adminLink.style.padding = '0.2rem 1rem';
+          adminLink.style.borderRadius = '60px';
         });
-        adminHandle.addEventListener('touchend', () => {
+        adminLink.addEventListener('touchend', () => {
           setTimeout(() => {
-            adminHandle.style.background = '#10002B';
-            adminHandle.style.color = '#03FF9C';
-          }, 100);
+            adminLink.style.color = '#03FF9C';
+            adminLink.style.background = 'transparent';
+            adminLink.style.padding = '0';
+            adminLink.style.borderRadius = '0';
+          }, 150);
         });
       }
     })();
   </script>
 
   <style>
-    a { text-decoration: none; }
-    .btn-mega-neon, .admin-tag-mob { transition: background 0.1s, color 0.1s, transform 0.1s; }
-    .service-item-mob { cursor: default; }
+    /* pequenos ajustes de toque */
+    a, .service-card-alt { cursor: default; }
     * { -webkit-tap-highlight-color: transparent; }
+    .btn-alt, .admin-handle-alt, .btn-small-alt { transition: all 0.12s; }
   </style>
 </body>
 </html>
